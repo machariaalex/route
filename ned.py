@@ -226,7 +226,7 @@ def main():
     # Display the main content in the main column
     with main_col:
         st.title("Route Optimization System for Field Operations in Tanzania")
-        st.sidebar.title("Select to Display Visualization Options")
+        
         display_option = st.sidebar.radio("Select to Display Visualization Options", ["About the Project", "Project Analysis"])
 
         if display_option == "About the Project":
