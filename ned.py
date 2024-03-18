@@ -203,7 +203,7 @@ def draw_trips_per_day_chart(df):
     trips_per_day_chart['Start Time'] = pd.to_datetime(trips_per_day_chart['Start Time'])
     st.subheader("Trips Made per Day:")
     st.line_chart(trips_per_day_chart.set_index('Start Time'))
-logo_path = '/home/ndegwa/mlfow/sanku.jpeg'
+logo_path = 'sanku.jpeg'
 
 def main():
     # Load dataset
