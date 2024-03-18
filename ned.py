@@ -56,11 +56,11 @@ def plot_null_values(data, column):
     # Add insights below the chart
     if column == 'Start Geofence':
         st.subheader("Insights:")
-        st.write("i.  An average of 60% of the amount spent on fuel was out of the geofence.")
+        st.write("i.  An Approximately of 60% of the amount spent on fuel was out of the geofence.")
         st.write("ii.  3 out of 5 trips made by RMs in day started out of the geofence.")
     elif column == 'End Geofence':
         st.subheader("Insights:")
-        st.write("i.  An average of 64% of the amount spent on fuel was out of the end of the geofence.")
+        st.write("i.  An Approximately of 64% of the amount spent on fuel was out of the end of the geofence.")
         st.write("ii.  3 out of 5 trips made by RMs in day started out of the geofence.")
 
 def draw_network_graph(df, selected_registration, selected_start_location, show_trips_per_day):
