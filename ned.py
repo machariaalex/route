@@ -251,6 +251,7 @@ def main():
             st.markdown("**<p style='font-size: 12px;'>Product of the IS Team. All Rights Reserved. &copy; 2024</p>**", unsafe_allow_html=True)
         else:
             # Visualization options
+            display_option = st.sidebar.radio("Select to Display Visualization Options", ["About the Project", "Project Analysis"])
             st.sidebar.title("Visualization Options")
             selected_option = st.sidebar.radio("Select Option", ["Trips that Started Out of Geofence", "Trips that Ended Out of Geofence", "Trips Within the Geofence Analysis", "Trips Out of Geofence Analysis", "Trips Out of Geofence Fuel Consumption vs Trips Within Geofence Fuel Consumption"])
 
