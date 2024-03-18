@@ -203,7 +203,7 @@ def draw_trips_per_day_chart(df):
     trips_per_day_chart['Start Time'] = pd.to_datetime(trips_per_day_chart['Start Time'])
     st.subheader("Trips Made per Day:")
     st.line_chart(trips_per_day_chart.set_index('Start Time'))
-logo_path = 'sanku.jpeg'
+logo_path = '/home/ndegwa/mlfow/sanku.jpeg'
 
 def main():
     # Load dataset
@@ -213,9 +213,10 @@ def main():
     df['Start Month'] = df['Start Time'].dt.month_name()
 
     # Streamlit app title
-    st.title("Route Optimization System for Field Operations in Tanzania")
+    
 
-    # Set up a column layout
+    # Display the logo just above the title
+   # Set up a column layout
     main_col, logo_col = st.columns([8, 3])
 
     # Display the logo in the logo column
@@ -224,10 +225,13 @@ def main():
 
     # Display the main content in the main column
     with main_col:
+        st.title("Route Optimization System for Field Operations in Tanzania")
         st.sidebar.title("Select to Display Visualization Options")
         display_option = st.sidebar.radio("Select to Display Visualization Options", ["About the Project", "Project Analysis"])
 
         if display_option == "About the Project":
+            # Displaying information about the project..            # Visualization options...
+
             st.subheader("Welcome to Version 1 of our Route Optimization System")
             st.markdown("""
             This model has been crafted using data sourced from car tracker, particularly Sanku’s primary fleet management tool, covering the period from **October 2023 to January 2024.** As of now, we are working with a sample size of **5,000** entries out of a total of **21,914** entries. Due to computational limitations, we are constrained to using this sample, but we anticipate leveraging the entire dataset during the piloting and production phases.
