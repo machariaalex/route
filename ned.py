@@ -203,7 +203,7 @@ def draw_trips_per_day_chart(df):
     trips_per_day_chart['Start Time'] = pd.to_datetime(trips_per_day_chart['Start Time'])
     st.subheader("Trips Made per Day:")
     st.line_chart(trips_per_day_chart.set_index('Start Time'))
-logo_path = 'sanku.jpeg'
+logo_path = '/home/ndegwa/mlfow/sanku.jpeg'
 
 def main():
     # Load dataset
@@ -226,7 +226,7 @@ def main():
     # Display the main content in the main column
     with main_col:
         st.title("Route Optimization System for Field Operations in Tanzania")
-        
+        st.sidebar.title("Select to Display Visualization Options")
         display_option = st.sidebar.radio("Select to Display Visualization Options", ["About the Project", "Project Analysis"])
 
         if display_option == "About the Project":
@@ -251,7 +251,6 @@ def main():
             st.markdown("**<p style='font-size: 12px;'>Product of the IS Team. All Rights Reserved. &copy; 2024</p>**", unsafe_allow_html=True)
         else:
             # Visualization options
-            display_option = st.sidebar.radio("Select to Display Visualization Options", ["About the Project", "Project Analysis"])
             st.sidebar.title("Visualization Options")
             selected_option = st.sidebar.radio("Select Option", ["Trips that Started Out of Geofence", "Trips that Ended Out of Geofence", "Trips Within the Geofence Analysis", "Trips Out of Geofence Analysis", "Trips Out of Geofence Fuel Consumption vs Trips Within Geofence Fuel Consumption"])
 
