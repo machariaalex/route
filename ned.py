@@ -47,7 +47,7 @@ def plot_null_values(data, column):
         percentage = '{:.2f}%'.format(100 * p.get_height()/total)
         x = p.get_x() + p.get_width() / 2
         y = p.get_height()
-        ax.annotate(percentage, (x, y), ha='center', va='center', color='black', size=12)
+        ax.annotate(percentage, (x, y), ha='center', va='bottom', color='black', size=12)
 
     plt.title(f'Trips that Started Out of Geofence' if column == 'Start Geofence' else f'Trips that Ended Out of Geofence')
     plt.xlabel('Out of Route')
@@ -56,12 +56,13 @@ def plot_null_values(data, column):
     # Add insights below the chart
     if column == 'Start Geofence':
         st.subheader("Insights:")
-        st.write("i.  An Approximately of 60% of the amount spent on fuel was out of the geofence.")
-        st.write("ii.  3 out of 5 trips made by RMs in day started out of the geofence.")
+        st.write("i. Approximately  of 60% of the amount spent on fuel was out of the geofence.")
+        st.write("ii.  3 out of 5 trips made by RMs in a day started out of the geofence.")
     elif column == 'End Geofence':
         st.subheader("Insights:")
-        st.write("i.  An Approximately of 64% of the amount spent on fuel was out of the end of the geofence.")
-        st.write("ii.  3 out of 5 trips made by RMs in day started out of the geofence.")
+        st.write("i.  Approximately of 64% of the amount spent on fuel was out of the end of the geofence.")
+        st.write("ii.  3 out of 5 trips made by RMs in a day started out of the geofence.")
+
 
 def draw_network_graph(df, selected_registration, selected_start_location, show_trips_per_day):
     # Filter the dataframe based on the selected registration number and start location
@@ -203,7 +204,7 @@ def draw_trips_per_day_chart(df):
     trips_per_day_chart['Start Time'] = pd.to_datetime(trips_per_day_chart['Start Time'])
     st.subheader("Trips Made per Day:")
     st.line_chart(trips_per_day_chart.set_index('Start Time'))
-logo_path = 'sanku.jpeg'
+logo_path = '/home/ndegwa/mlfow/sanku.jpeg'
 
 def main():
     # Load dataset
@@ -327,32 +328,6 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 st.markdown("Product of the IS Team. All Rights Reserved. &copy; 2024")
 
-            # Add the new analysis options
-            elif selected_option == "Total Trips, Fuel Costs, and Costs Per Diem (Selected Registration Number)":
-                # Calculate total trips per month, total fuel costs per month, and total costs per diem for the selected registration number
-                total_trips_selected_reg = df[df['Registration'] == selected_registration].groupby('Start Month').size().reset_index(name='Total Trips')
-                total_fuel_costs_selected_reg = calculate_total_fuel_cost_per_month(df[df['Registration'] == selected_registration])
-                total_costs_per_month_selected_reg = total_trips_selected_reg.copy()
-                total_costs_per_month_selected_reg['Total Cost (TZS)'] = total_costs_per_month_selected_reg['Total Trips'] * 90000
-
-                # Display the table for the selected registration number
-                st.subheader("Total Trips, Fuel Costs, and Costs Per Diem (Selected Registration Number)")
-                st.table(total_trips_selected_reg)
-                st.table(total_fuel_costs_selected_reg)
-                st.table(total_costs_per_month_selected_reg)
-
-            elif selected_option == "Total Trips, Fuel Costs, and Costs Per Diem (All Registration Numbers)":
-                # Calculate total trips per month, total fuel costs per month, and total costs per diem for all registration numbers
-                total_trips_all_reg = df.groupby(['Start Month', 'Registration']).size().reset_index(name='Total Trips').groupby('Start Month')['Total Trips'].sum().reset_index()
-                total_fuel_costs_all_reg = calculate_total_fuel_cost_per_month(df)
-                total_costs_per_month_all_reg = total_trips_all_reg.copy()
-                total_costs_per_month_all_reg['Total Cost (TZS)'] = total_costs_per_month_all_reg['Total Trips'] * 90000
-
-                # Display the table for all registration numbers
-                st.subheader("Total Trips, Fuel Costs, and Costs Per Diem (All Registration Numbers)")
-                st.table(total_trips_all_reg)
-                st.table(total_fuel_costs_all_reg)
-                st.table(total_costs_per_month_all_reg)
 
 if __name__ == "__main__":
     main()
