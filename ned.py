@@ -235,7 +235,7 @@ def main():
 
             st.subheader("Welcome to Version 1 of our Route Optimization System")
             st.markdown("""
-            This model has been crafted using data sourced from car tracker, particularly Sanku’s primary fleet management tool, covering the period from **October 2023 to January 2024.** As of now, we are working with a sample size of **5,000** entries out of a total of **21,914** entries. Due to computational limitations, we are constrained to using this sample, but we anticipate leveraging the entire dataset during the piloting and production phases.
+            This model has been crafted using data sourced from car tracker, particularly Sanku’s primary fleet management tool, covering the period from **October 2023 to January 2024.** Please note that the featured geofences are as follows, offices including HQ, mills, and warehouse locations. As of now, we are working with a sample size of **5,000** entries out of a total of **21,914** entries. Due to computational limitations, we are constrained to using this sample, but we anticipate leveraging the entire dataset during the piloting and production phases.
 
             Our primary goal with this version 1 model is diagnostic in nature, focusing on the following objectives:
             
