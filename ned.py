@@ -56,12 +56,14 @@ def plot_null_values(data, column):
     # Add insights below the chart
     if column == 'Start Geofence':
         st.subheader("Insights:")
-        st.write("1. Approximately  of 60% of the amount spent on fuel was out of the geofence.")
-        st.write("2.  3 out of 5 trips made by RMs in a day started out of the geofence.")
+        st.write("1.  3 out of 5 trips made by RMs in a day started out of the geofence.")
+
+        st.write("2. Approximately  of 60% of the amount spent on fuel was out of the geofence.")
     elif column == 'End Geofence':
         st.subheader("Insights:")
-        st.write("1.  Approximately of 64% of the amount spent on fuel was out of the end of the geofence.")
-        st.write("2.  3 out of 5 trips made by RMs in a day started out of the geofence.")
+        st.write("1.  3 out of 5 trips made by RMs in a day started out of the geofence.")
+        st.write("2.  Approximately of 64% of the amount spent on fuel was out of the end of the geofence.")
+        
 
 
 def draw_network_graph(df, selected_registration, selected_start_location, show_trips_per_day):
@@ -204,7 +206,7 @@ def draw_trips_per_day_chart(df):
     trips_per_day_chart['Start Time'] = pd.to_datetime(trips_per_day_chart['Start Time'])
     st.subheader("Trips Made per Day:")
     st.line_chart(trips_per_day_chart.set_index('Start Time'))
-logo_path = 'sanku.jpeg'
+logo_path = 'WhatsApp Image 2024-03-22 at 12.26.22 PM.jpeg'
 
 def main():
     # Load dataset
