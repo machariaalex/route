@@ -62,11 +62,11 @@ def plot_null_values(data, column):
         st.subheader("Insights:")
         st.write("1.  3 out of 5 trips made by RMs in a day started out of the geofence.")
 
-        st.write("2. Approximately  of 60% of the amount spent on fuel was out of the geofence.")
+        st.write("2. Approximately 60% of the amount spent on fuel was on trips out of the geofence(start)")
     elif column == 'End Geofence':
         st.subheader("Insights:")
         st.write("1.  3 out of 5 trips made by RMs in a day started out of the geofence.")
-        st.write("2.  Approximately of 64% of the amount spent on fuel was out of the end of the geofence.")
+        st.write("2.  Approximately 60% of the amount spent on fuel was on trips out of the geofence(end)")
         
 
 
