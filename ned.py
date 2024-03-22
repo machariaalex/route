@@ -228,7 +228,7 @@ def main():
     with main_col:
         st.title("Route Optimization System for Field Operations in Tanzania")
         st.sidebar.title("Select to Display Visualization Options")
-        display_option = st.sidebar.radio("Select to Display Visualization Options", ["About the Project", "Route Analysis Analysis"])
+        display_option = st.sidebar.radio("Select to Display Visualization Options", ["About the Project", "Route Analysis"])
 
         if display_option == "About the Project":
             # Displaying information about the project..            # Visualization options...
