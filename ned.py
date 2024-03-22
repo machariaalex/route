@@ -224,7 +224,7 @@ def main():
 
     # Display the logo in the logo column
     with logo_col:
-        st.image(logo_path, width=120)
+        st.image(logo_path, width=175)
 
     # Display the main content in the main column
     with main_col:
