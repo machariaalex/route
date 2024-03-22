@@ -255,6 +255,7 @@ Our primary goal with this version 1 model is diagnostic in nature, focusing on 
 **Here are the key findings:**
 
 1.The total fuel budget for Q1 was Tsh 42,350,000. However, our analysis only covers 5,000 entries out of a total of 21,914 entries. Based on our sample, the estimated total budget would be Tsh 9,662,773. Approximately Tsh 8,933,233, or roughly 92.45%, was spent on wasted trips.
+2. Wednesday had the highest number trips at 1080 while Sunday had the lowest number of trips at 164
 Moving forward, version 2 will evolve into a predictive tool that will optimize routes for field operations teams in Tanzania, enhancing efficiency and driving cost savings.
 
 *The landing page for our web application will showcase the insights gleaned from this optimization model. We invite you to explore and engage with the features as we continue to refine and enhance our system to meet your operational needs.*
