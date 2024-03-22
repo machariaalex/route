@@ -12,13 +12,17 @@ def calculate_total_fuel_cost(distance):
     # 1 litre covers 9 km, and 1 litre is sold at 3100 TZS
     consumption_per_km = 1 / 9
     cost_per_litre = 3100
-    return round((distance * consumption_per_km * cost_per_litre), 2)
+    return round(distance * consumption_per_km * cost_per_litre)
+
 
 # Function to calculate the total fuel cost per month
 def calculate_total_fuel_cost_per_month(df):
     df['Total Cost on Fuel (TZS)'] = df['Distance'].apply(calculate_total_fuel_cost)
+    df['Total Cost on Fuel (TZS)'] = df['Total Cost on Fuel (TZS)'].round().astype(int)  # Round off to nearest whole number
     total_fuel_cost_per_month = df.groupby(df['Start Month'])['Total Cost on Fuel (TZS)'].sum().reset_index(name='Total Fuel Cost')
     return total_fuel_cost_per_month
+
+
 
 # Function to calculate fuel costs and percentages for the selected month
 def calculate_fuel_costs(df):
@@ -237,25 +241,30 @@ def main():
 
             st.subheader("Welcome to Version 1 of our Route Optimization System")
             st.markdown("""
-            This model has been crafted using data sourced from car tracker, particularly Sanku’s primary fleet management tool, covering the period from **October 2023 to January 2024.** Please note that the featured geofences are as follows, offices including HQ, mills, and warehouse locations. As of now, we are working with a sample size of **5,000** entries out of a total of **21,914** entries. Due to computational limitations, we are constrained to using this sample, but we anticipate leveraging the entire dataset during the piloting and production phases.
-
-            Our primary goal with this version 1 model is diagnostic in nature, focusing on the following objectives:
+            This model has been crafted using data sourced from car tracker, particularly Sanku’s primary fleet management tool, covering the period from **October 2023 to January 2024.** As of now, we are working with a sample size of **5,000** entries out of a total of **21,914** entries. Due to computational limitations, we are constrained to using this sample, but we anticipate leveraging the entire dataset during the piloting and production phases.
+Our primary goal with this version 1 model is diagnostic in nature, focusing on the following objectives:
             
-            - Analyzing fuel consumption to identify potential savings.
-            - Evaluating time consumption to identify areas for efficiency gains.
-            - Assessing per diem costs and identifying potential savings.
-            - Estimating maintenance costs and identifying opportunities for cost reductions.
+- Analyzing fuel consumption to identify potential savings.
+- Evaluating time consumption to identify areas for efficiency gains.
+- Assessing per diem costs and identifying potential savings.
+- Estimating maintenance costs and identifying opportunities for cost reductions.
 
-            Moving forward, version 2 will evolve into a predictive tool that will optimize routes for field operations teams in Tanzania, enhancing efficiency and driving cost savings.
 
-            *The landing page for our web application will showcase the insights gleaned from this optimization model. We invite you to explore and engage with the features as we continue to refine and enhance our system to meet your operational needs.*
+            
+
+**Here are the key findings:**
+
+1.The total fuel budget for Q1 was Tsh 42,350,000. However, our analysis only covers 5,000 entries out of a total of 21,914 entries. Based on our sample, the estimated total budget would be Tsh 9,662,773. Approximately Tsh 8,933,233, or roughly 92.45%, was spent on wasted trips.
+Moving forward, version 2 will evolve into a predictive tool that will optimize routes for field operations teams in Tanzania, enhancing efficiency and driving cost savings.
+
+*The landing page for our web application will showcase the insights gleaned from this optimization model. We invite you to explore and engage with the features as we continue to refine and enhance our system to meet your operational needs.*
             """)
             st.markdown("<br>", unsafe_allow_html=True)
             st.markdown("**<p style='font-size: 12px;'>Product of the IS Team. All Rights Reserved. &copy; 2024</p>**", unsafe_allow_html=True)
         else:
-            # Visualization options
+           # Visualization options
             st.sidebar.title("Visualization Options")
-            selected_option = st.sidebar.radio("Select Option", ["Trips that Started Out of Geofence", "Trips that Ended Out of Geofence", "Trips Within the Geofence Analysis", "Trips Out of Geofence Analysis", "Trips Out of Geofence Fuel Consumption vs Trips Within Geofence Fuel Consumption"])
+            selected_option = st.sidebar.radio("Select Option", ["Trips Out of Geofence Fuel Consumption vs Trips Within Geofence Fuel Consumption", "Trips that Started Out of Geofence", "Trips that Ended Out of Geofence", "Trips Within the Geofence Analysis", "Trips Out of Geofence Analysis"])
 
             if selected_option == "Trips that Started Out of Geofence":
                 plot_null_values(df, 'Start Geofence')
@@ -333,4 +342,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
